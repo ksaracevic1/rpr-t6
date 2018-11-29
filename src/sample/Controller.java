@@ -54,6 +54,22 @@ public class Controller {
         return validno;
     }
 
+    public boolean validanmejl(String x) {
+        boolean validno1 = false;
+        boolean validno2 = false;
+        int br = 0;
+
+        for (int i = 0; i < x.length(); i++) {
+            if (x.charAt(i)=='.') validno1 = true;
+            if (x.charAt(i)=='@') validno2 = true;
+        }
+        return validno1 && validno2;
+    }
+
+
+
+
+
     public boolean validanindex(String x) {
         boolean p = true;
         if (x.length() == 0 || x.length() > 5) return false;
@@ -74,6 +90,23 @@ public class Controller {
         JMBG.getStyleClass().add("poljeNijeIspravno");
 
 
+        eMail.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (validanmejl(newValue)) {
+                    eMail.getStyleClass().removeAll("poljeNijeIspravno");
+                    eMail.getStyleClass().add("poljeIspravno");
+                } else {
+                    eMail.getStyleClass().removeAll("poljeIspravno");
+                    eMail.getStyleClass().add("poljeNijeIspravno");
+                }
+
+
+            }
+        });
+
+
+
         ime.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -89,7 +122,7 @@ public class Controller {
             }
         });
 
-        prezime.textProperty().addListener(new ChangeListener<String>() {
+           prezime.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 if (validnoimeiprezime(newValue)) {
@@ -117,12 +150,29 @@ public class Controller {
         }));
 
 
+     /*   JMBG.textProperty().addListener((new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if ( L = 11 - (( 7*(A+E) + 6*(B+Ž) + 5*(V+Z) + 4*(G+I) + 3*(D+J) + 2*(Đ+K) ) % 11) ) {
+                    JMBG.getStyleClass().removeAll("poljeNijeIspravno");
+                    JMBG.getStyleClass().add("poljeIspravno");
+                } else {
+                    JMBG.getStyleClass().removeAll("poljeIspravno");
+                    JMBG.getStyleClass().add("poljeNijeIspravno");
+                }
+            }
+        })); */
+
+
         godina.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
             public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
                 pritisnuto = true;
             }
         });
+
+
+
 
 
     }
