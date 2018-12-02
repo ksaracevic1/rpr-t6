@@ -1,9 +1,6 @@
-#groupBox{
-    -fx-border-color: lightGrey;
-    -fx-border-width: 2;
-    -fx-border-radius: 2px;
+#rectangle{
+    -fx-stroke: #ab8787;
 }
-
 .poljeIspravno {
     -fx-control-inner-background: greenyellow;
     -fx-border-width: 2;
@@ -13,4 +10,9 @@
     -fx-control-inner-background: #ff5e56;
     -fx-border-width: 2;
     -fx-border-radius: 2px;
+}
+#messageLabel{
+    -fx-text-fill: red;
+}
+#potvrdiButton{
 }
